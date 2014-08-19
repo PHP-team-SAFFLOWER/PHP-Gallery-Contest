@@ -54,7 +54,7 @@ h1{
     text-align: center;
     font-size: 4rem;
     font-family: "Vampiro One";
-    color: #FFDD1B;
+    color: black;
     margin-bottom: 2%;
     -webkit-animation: neon2 1.0s ease-in-out infinite alternate;
 }
@@ -68,6 +68,7 @@ h1{
     background: whitesmoke;
     border-radius: 40px;
     margin: 0 auto;
+    margin-top: 5%;
     width: 500px;
     height: 600px;
 }
@@ -81,7 +82,7 @@ h1{
     width: 400px;
     height: 400px;
     margin: 0 auto;
-  
+
 
 }
 .user_interface input{
