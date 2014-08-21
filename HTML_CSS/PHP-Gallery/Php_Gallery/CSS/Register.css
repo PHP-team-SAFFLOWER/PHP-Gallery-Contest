@@ -61,9 +61,21 @@ h1{
     margin-bottom: 2%;
     -webkit-animation: neon2 0.9s ease-in-out infinite alternate;
 }
-::-webkit-input-placeholder { color:#f00; font-family: "Vampiro One"}
 
+::-webkit-input-placeholder {
+    color:#f00; font-family: "Vampiro One";
+}
 
+a{
+
+    font-size: 20px;
+    text-decoration: none;
+    color: darkslategrey;
+    border-radius: 20px;
+    text-align: center;
+    display: block;
+    margin: 2%;
+}
 
 
 .user_interface{
@@ -111,6 +123,10 @@ h1{
 
 
 }
+.user_interface #login{
+    color: green;
+    border: black 1px solid;
+}
 .user_interface input:focus {
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
 }
@@ -118,24 +134,24 @@ h1{
 /*glow for webkit*/
 @-webkit-keyframes neon1 {
     from {
-        box-shadow: 0 0 10px #fff,
-        0 0 5px  #fff,
-        0 0 10px  #fff,
-        0 0 20px  #228DFF,
-        0 0 30px  #228DFF,
-        0 0 50px  #228DFF,
-        0 0 70px #228DFF,
-        0 0 80px #228DFF;
+        box-shadow: 0 0 1px #fff,
+        0 0 2px  #fff,
+        0 0 4px  #fff,
+        0 0 5px  #228DFF,
+        0 0 8px  #228DFF,
+        0 0 10px  #228DFF,
+        0 0 25px #228DFF,
+        0 0 30px #228DFF;
     }
     to {
-        box-shadow: 0 0 10px #fff,
+        box-shadow: 0 0 1px #fff,
         0 0 1px  #fff,
         0 0 5px  #fff,
         0 0 10px  #228DFF,
-        0 0 20px  #228DFF,
-        0 0 35px  #228DFF,
-        0 0 40px #228DFF,
-        0 0 50px #228DFF;
+        0 0 12px  #228DFF,
+        0 0 15px  #228DFF,
+        0 0 20px #228DFF,
+        0 0 30px #228DFF;
     }
 }
 @-webkit-keyframes neon2 {

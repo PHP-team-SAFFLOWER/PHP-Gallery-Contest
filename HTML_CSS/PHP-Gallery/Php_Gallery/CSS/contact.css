@@ -1,0 +1,212 @@
+@font-face {
+    font-family: 'Monoton';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Monoton'), local('Monoton-Regular'), url(http://themes.googleusercontent.com/static/fonts/monoton/v4/AKI-lyzyNHXByGHeOcds_w.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Iceland';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Iceland'), local('Iceland-Regular'), url(http://themes.googleusercontent.com/static/fonts/iceland/v3/F6LYTZLHrG9BNYXRjU7RSw.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Pacifico Regular'), local('Pacifico-Regular'), url(http://themes.googleusercontent.com/static/fonts/pacifico/v5/yunJt0R8tCvMyj_V4xSjafesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'PressStart';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Press Start 2P'), local('PressStart2P-Regular'), url(http://themes.googleusercontent.com/static/fonts/pressstart2p/v2/8Lg6LX8-ntOHUQnvQ0E7o3dD2UuwsmbX3BOp4SL_VwM.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Audiowide';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Audiowide'), local('Audiowide-Regular'), url(http://themes.googleusercontent.com/static/fonts/audiowide/v2/8XtYtNKEyyZh481XVWfVOj8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Vampiro One';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Vampiro One'), local('VampiroOne-Regular'), url(http://themes.googleusercontent.com/static/fonts/vampiroone/v3/Ho2Xld8UbQyBA8XLxF1_NYbN6UDyHWBl620a-IRfuBk.woff) format('woff');
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-size: 62.50%;
+    background-image: url("../IMAGES/Background.jpg");
+    background-size: 20%;
+    padding: 2%;
+}
+.team{
+    height: 200px;
+    display: block;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    -webkit-animation: neon7 1.5s ease-in-out infinite alternate;
+    border-radius: 20px;
+
+
+}
+
+.container_frame{
+    position: relative; top: 0px; left: 0px;
+    width:  400px;
+    height: 200px;
+    background: rgba(111, 194, 255, 0.91);
+    overflow: hidden;
+    border-radius: 17px;
+
+}
+.container_frame_inside{
+    cursor: move; position:
+    absolute; left: 0px;
+    top: 0px; width: 200px;
+    height: 200px ;
+    border-radius: 10px 0 0 10px;
+    overflow: hidden;
+
+}
+
+
+ .jssort11
+ {
+     font-family: Arial, Helvetica, sans-serif;
+ }
+.jssort11 .i, .jssort11 .pav:hover .i
+{
+    position: absolute;
+    top:3px;
+    left:3px;
+    WIDTH: 60px;
+    HEIGHT: 30px;
+    border: white 1px dashed;
+}
+* html .jssort11 .i
+{
+    WIDTH /**/: 62px;
+    HEIGHT /**/: 32px;
+}
+.jssort11 .pav .i
+{
+    border: white 1px solid;
+
+}
+.jssort11 .t, .jssort11 .pav:hover .t
+{
+    position: absolute;
+    top: 3px;
+    left: 68px;
+    width:129px;
+    height: 32px;
+    color:#ff0000;
+    font-size:13px;
+    font-weight:700;
+    font-family: Iceland;
+
+}
+
+.jssort11 .pav .t, .jssort11 .phv .t, .jssort11 .p:hover .t
+{
+    color:purple;
+
+}
+.jssort11 .c, .jssort11 .pav:hover .c
+{
+    position: absolute;
+    top: 38px;
+    left: 3px;
+    width:197px;
+    height: 31px;
+    line-height:31px;
+    color:#fff;
+    font-size:11px;
+    font-weight:400;
+    overflow: hidden;
+}
+.c{
+
+}
+.jssort11 .pav .c, .jssort11 .phv .c, .jssort11 .p:hover .c
+{
+
+    color:#fc9835;
+}
+.jssort11 .t, .jssort11 .c
+{
+
+    transition: color 2s;
+    -moz-transition: color 2s;
+    -webkit-transition: color 2s;
+    -o-transition: color 2s;
+}
+.jssort11 .p:hover .t, .jssort11 .phv .t, .jssort11 .pav:hover .t, .jssort11 .p:hover .c, .jssort11 .phv .c, .jssort11 .pav:hover .c
+{
+    transition: none;
+    -moz-transition: none;
+    -webkit-transition: none;
+    -o-transition: none;
+}
+.jssort11 .p
+{
+    background:transparent;
+}
+.jssort11 .pav, .jssort11 .pdn
+{
+    background:transparent;
+}
+.jssort11 .p:hover, .jssort11 .phv, .jssort11 .pav:hover
+{
+    background:transparent;
+}
+.frame{
+    filter: alpha(opacity=70);
+    opacity:0.7; position: absolute;
+    display: block;
+    background-color: #000000; top: 0px; left: 0px;width: 100%;height:100%;
+
+}
+.frame .inside_frame{
+    position: absolute;
+    display: block;
+
+    top: 0px; left: 0px;width: 100%;height:100%;
+}
+
+@-webkit-keyframes neon7 {
+    from {
+        box-shadow: 0 0 1px #fff,
+        0 0 2px #fff,
+        0 0 4px #fff,
+        0 0 5px #228DFF,
+        0 0 8px #228DFF,
+        0 0 10px #228DFF,
+        0 0 25px #228DFF,
+        0 0 30px #228DFF;
+    }
+    to {
+        box-shadow: 0 0 0px #fff,
+        0 0 1px #fff,
+        0 0 5px #fff,
+        0 0 10px #dbdf25,
+        0 0 12px #dbdf25,
+        0 0 15px #dbdf25,
+        0 0 20px #dbdf25,
+        0 0 30px #dbdf25;
+    }
+}
