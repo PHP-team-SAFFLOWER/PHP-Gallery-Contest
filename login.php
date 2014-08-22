@@ -13,6 +13,15 @@ mysql_select_db("$db_name")or die("cannot select DB");
 $myusername = $_POST['myusername'];
 $mypassword = $_POST['mypassword'];
 
+
+//**********************************************************************
+//TO CHECK WHERE TO PUT THIS CHECK
+if(!isset($_POST['username']) || !isset($_POST['password'])){
+    die('Fill all the fields');
+}
+//**********************************************************************
+
+
 // По този начин валидираме и се предпазваме от injection
 $myusername = stripslashes($myusername);
 $mypassword = stripslashes($mypassword);
@@ -33,7 +42,7 @@ if ($count == 1) {
 // Регистрира $myusername, $mypassword и пренасочва към "login_success.php" - който аз съп си правил за при  мен дали работи
     session_register("myusername");
     session_register("mypassword");
-    header("location:login_success.php");//да сложим нащшата локация където ще пренасочваме
+    header("location:login_success.php");//да сложим нащшата локация където ще пренасочваме 
 } else {
     echo "Wrong Username or Password";
 }
