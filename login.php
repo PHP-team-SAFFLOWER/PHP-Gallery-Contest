@@ -1,25 +1,40 @@
 <?php
-$arr = [1,2,3,4,5];
 
-unset($arr[2]);
+$host = "localhost"; // Името на Host
+$username = ""; // Mysql username
+$password = ""; // Mysql password
+$db_name = "login_test_db"; // Името на базата данни - сменяме го с правилното
+$tbl_name = "members"; // Името на нашата таблица - сменяме я с правилната
+// Connect to server and select databse.
+mysql_connect("$host", "$username", "$password")or die("cannot connect");
+mysql_select_db("$db_name")or die("cannot select DB");
 
-array_push($arr, 1);
-$arr[] = 3;
-foreach ($arr as $value){
-    //echo $value . "<br/>";
+// username and password изпратени от формата
+$myusername = $_POST['myusername'];
+$mypassword = $_POST['mypassword'];
+
+// По този начин валидираме и се предпазваме от injection
+$myusername = stripslashes($myusername);
+$mypassword = stripslashes($mypassword);
+$myusername = mysql_real_escape_string($myusername);
+$mypassword = mysql_real_escape_string($mypassword);
+
+$sql = "SELECT * FROM $tbl_name WHERE username='$myusername' and password='$mypassword'";
+$result = mysql_query($sql);
+
+// Mysql_num_row брои броя на редовете
+$count = mysql_num_rows($result);
+
+// Ако резултата от $myusername и $mypassword съвпадне, броя на table row трябва да е 1
+//тоест имаме само едно съвпадение (unique user)
+
+if ($count == 1) {
+
+// Регистрира $myusername, $mypassword и пренасочва към "login_success.php" - който аз съп си правил за при  мен дали работи
+    session_register("myusername");
+    session_register("mypassword");
+    header("location:login_success.php");//да сложим нащшата локация където ще пренасочваме
+} else {
+    echo "Wrong Username or Password";
 }
-//echo json_encode($arr);
-
-$array = [];
-for ($index = 0; $index < 10; $index++) {
-    $array[] = [3,4,5];
-}
-//var_dump($array);
-//echo json_encode($array);
-$prices = ['apples' => 2.30, 'oranges' => 3];
-var_dump($prices);
-$prices['tomatoes'] = 5; // ADDING ELEMENT IN ASSOCIATVIE ARRAY - KEY VALUE
-
-$pricess  = object($prices);  // TRANSFORMING PRICES FROM ASSOCIATIVE ARRAY TO AN OBJECT
-$pricess -> color = 'red';
-var_dump($pricess);
+?>
