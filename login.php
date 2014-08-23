@@ -10,8 +10,8 @@ mysql_connect("$host", "$username", "$password")or die("cannot connect");
 mysql_select_db("$db_name")or die("cannot select DB");
 
 // username and password изпратени от формата
-$myusername = $_POST['myusername'];
-$mypassword = $_POST['mypassword'];
+$myusername = $_POST['user_login'];//взети от формата на Миро
+$mypassword = $_POST['user_password'];//взети от формата на Миро
 
 
 //**********************************************************************
