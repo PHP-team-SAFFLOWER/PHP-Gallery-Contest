@@ -7,10 +7,6 @@ include("functions.php");
 if ($_POST && areSet($_POST,['user_login','user_password', 'user_confpassword'])) {
     $logName = $_POST['user_login'];
     $logPass = $_POST['user_password'];
-    $logPass2 = $_POST['user_confpassword'];
-    if ($logPass!==$logPass2) {
-        redirectOnError("index.php", "Wrong Confirmation Password");
-    }
     $host="localhost"; // Host name
     $name="root"; // Mysql username
     $password=""; // Mysql password
@@ -78,9 +74,7 @@ if ($_POST && areSet($_POST,['user_login','user_password', 'user_confpassword'])
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
             <input type="text" name="user_login" id="user" required="" placeholder="USERNAME">
             <input type="password" name="user_password" id="password" required="" placeholder="PASSWORD">
-            <input type="password" name="user_confpassword" id="confpassword" placeholder="REPEAT PASSWORD">
             <input type="submit" id="login" value="LOGIN">
-            <a href="#" name="forget_password">FORGET PASSWORD ?</a>
         </form>
         <a href="register.php">New to us? Register here</a>
     </nav>
