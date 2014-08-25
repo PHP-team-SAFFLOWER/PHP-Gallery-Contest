@@ -18,7 +18,7 @@ if ($_POST && areSet($_POST,['user_login','user_password', 'user_confpassword'])
     $tbl_name="users"; // Table name
 
     //connect to mysql
-    $con = mysqli_connect($host, $name, NULL);
+    $con = mysqli_connect($host, $name, $password);
     $logName = mysqli_real_escape_string($con, stripcslashes($_POST['user_login']));
     $logPass = mysqli_real_escape_string($con, stripcslashes($_POST['user_password']));
     // Check connection
@@ -34,7 +34,7 @@ if ($_POST && areSet($_POST,['user_login','user_password', 'user_confpassword'])
 
     }
     mysqli_free_result($dbIsSet);
-    $con = mysqli_connect($host, $name, NULL, $db_name);
+    $con = mysqli_connect($host, $name, $password, $db_name);
     // Check connection
     if (mysqli_connect_errno()) {
         mysqli_close($con);

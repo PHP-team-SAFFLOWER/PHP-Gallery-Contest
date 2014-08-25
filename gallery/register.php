@@ -25,7 +25,7 @@ if (areSet($_POST,['regName','regPass', 'confPass', 'email'])) {
     $tbl_name="users"; // Table name
 
     //connect to mysql
-    $con = mysqli_connect($host, $name, NULL);
+    $con = mysqli_connect($host, $name, $password);
     $regName = mysqli_real_escape_string($con, stripcslashes($_POST['regName']));
     $regPass = mysqli_real_escape_string($con, stripcslashes($_POST['regPass']));
     $email = mysqli_real_escape_string($con, stripcslashes($_POST['email']));
@@ -45,7 +45,7 @@ if (areSet($_POST,['regName','regPass', 'confPass', 'email'])) {
     mysqli_free_result($dbIsSet);
 
     //connect to db_name
-    $con = mysqli_connect($host, $name, NULL, $db_name);
+    $con = mysqli_connect($host, $name, $password, $db_name);
     //check if tbl_name exist. if no create it
     $tblIsSet = mysqli_query($con, "SHOW TABLES LIKE '$tbl_name'");
     if ($tblIsSet->num_rows==0) {
