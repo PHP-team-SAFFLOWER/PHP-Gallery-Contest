@@ -65,26 +65,26 @@ body{
     height: 50px;
     margin: 0 auto;
     text-align: center;
-
-
+    cursor: pointer;
 
 }
 .person_image{
     margin: 0 auto;
     margin-top: 20px;
     width: 180px;
-
     height: 0;
-    -webkit-transition: height 1s; /* For Safari 3.1 to 6.0 */
+    -webkit-transition: height 0.5s; /* For Safari 3.1 to 6.0 */
     transition: height 1s;
-    -webkit-animation: neon7 1.5s ease-in-out infinite alternate;
+    -webkit-animation: neon7 0.8888s ease-in-out infinite alternate;
     border-radius: 20px 20px 20px 20px;
+    cursor: pointer;
 }
 
 .role:hover .person_image{
     height: 200px;
     width: 180px;
-
+    cursor: pointer;
+    border: 1px solid #ffffff;
     border-radius: 10px 10px 10px 10px;
     -webkit-animation: neon7 1.5s ease-in-out infinite alternate;
 
@@ -141,4 +141,5 @@ body{
         0 0 30px #fff95b;
     }
 }
+
 

@@ -65,9 +65,6 @@ body{
     width: 150px;
     display: block;
 
-
-
-
 }
 
 .menu li a {
@@ -90,9 +87,13 @@ body{
     display: inline;
 }
 #wrapper #user{
+    position: absolute;
     width: 330px;
+    left: 1050px;
+    top: 10px;
     display: inline;
     float: right;
+
 
 }
 #wrapper p {

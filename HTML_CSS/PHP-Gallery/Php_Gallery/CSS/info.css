@@ -1,0 +1,101 @@
+@font-face {
+    font-family: 'Monoton';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Monoton'), local('Monoton-Regular'), url(http://themes.googleusercontent.com/static/fonts/monoton/v4/AKI-lyzyNHXByGHeOcds_w.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Iceland';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Iceland'), local('Iceland-Regular'), url(http://themes.googleusercontent.com/static/fonts/iceland/v3/F6LYTZLHrG9BNYXRjU7RSw.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Audiowide';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Audiowide'), local('Audiowide-Regular'), url(http://themes.googleusercontent.com/static/fonts/audiowide/v2/8XtYtNKEyyZh481XVWfVOj8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-size: 62.50%;
+    background-image: url("../IMAGES/Background.jpg");
+    background-size: 20%;
+    padding: 2%;
+}
+.info{
+    height: 300px;
+}
+.info h3{
+    margin-top: 30px;
+    color: #ffffff;
+    font-family: Audiowide;
+    -webkit-animation: neon10 1.5s ease-in-out infinite alternate;
+    text-align: center;
+    font-size: 2.3rem;
+}
+.info a {
+    text-align: center;
+    display: block;
+    font-family: Audiowide;
+    font-size: 2.3rem;
+    color: #ffffff;
+    -webkit-animation: neon11 1.5s ease-in-out infinite alternate;
+    text-decoration: none;
+}
+
+@-webkit-keyframes neon10 {
+    from {
+        text-shadow:  0 0 10px #fff,
+        0 0 1px  #fff,
+        0 0 5px  #fff,
+        0 0 10px  #228DFF,
+        0 0 20px  #228DFF,
+        0 0 35px  #228DFF,
+        0 0 40px #228DFF,
+        0 0 50px #228DFF;
+    }
+
+    to {
+        text-shadow: 0 0 10px #fff,
+        0 0 5px  #fff,
+        0 0 20px  #fff,
+        0 0 30px  #FFDD1B,
+        0 0 50px  #FFDD1B,
+        0 0 60px  #FFDD1B,
+        0 0 70px #FFDD1B,
+        0 0 80px #FFDD1B;
+    }
+}
+
+@-webkit-keyframes neon11 {
+    from {
+        text-shadow:  0 0 10px #fff,
+        0 0 1px  #fff,
+        0 0 5px  #fff,
+        0 0 10px  #228DFF,
+        0 0 20px  red,
+        0 0 35px  #228DFF,
+        0 0 40px red,
+        0 0 50px #228DFF;
+    }
+
+    to {
+        text-shadow: 0 0 10px #fff,
+        0 0 5px  #fff,
+        0 0 20px  #fff,
+        0 0 30px  red,
+        0 0 50px  red,
+        0 0 60px  #FFDD1B,
+        0 0 70px  red,
+        0 0 80px #FFDD1B;
+    }
+}
+
