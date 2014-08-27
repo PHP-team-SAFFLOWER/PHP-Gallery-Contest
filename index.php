@@ -1,38 +1,84 @@
 <?php
-$title = "Start Page";
-include("yav_header.php");
-
 session_start();
-//if (isset($_SESSION['isLogged']) && $_SESSION['isLogged']===true) {
-//    header("location: yav_logged.php");
-//}
+//ob_start();
+$title = "Login";
+include("functions.php");
+
+if ($_POST && areSet($_POST,array('user_login','user_password'))) {
+    $logName = $_POST['user_login'];
+    $logPass = $_POST['user_password'];
+    $host="localhost"; // Host name
+    $name="root"; // Mysql username
+    $password=""; // Mysql password
+    $db_name="gallery_db"; // Database name
+    $tbl_name="users"; // Table name
+
+    //connect to mysql
+    $con = mysqli_connect($host, $name, $password);
+    $logName = mysqli_real_escape_string($con, stripcslashes($_POST['user_login']));
+    $logPass = mysqli_real_escape_string($con, stripcslashes($_POST['user_password']));
+    // Check connection
+    if (mysqli_connect_errno()) {
+        mysqli_close($con);
+        redirectOnError("index.php", "Failed to connect to MySQL: ". mysqli_connect_error());
+    }
+    //check if db_name exists. if no go to index.php
+    $dbIsSet = mysqli_query($con, "SHOW DATABASES LIKE '$db_name'");
+    if ($dbIsSet->num_rows==0) {
+        mysqli_close($con);
+        redirectOnError("index.php", "Database $db_name does not exist. Redirection to index.php<br/>");
+
+    }
+    mysqli_free_result($dbIsSet);
+    $con = mysqli_connect($host, $name, $password, $db_name);
+    // Check connection
+    if (mysqli_connect_errno()) {
+        mysqli_close($con);
+        redirectOnError("index.php", "Failed to connect to MySQL: " . mysqli_connect_error());
+    }
+    //check if user name and password are correct
+    $query=mysqli_query($con,"SELECT user_name, password FROM users WHERE user_name = '$logName' AND password = '".MD5($logPass)."'");
+    if ($query->num_rows==1) {
+//        $row = mysqli_fetch_assoc($query);
+        $_REQUEST = array();
+        $_SESSION['userName'] = $logName;
+        $_SESSION['isLogged'] = true;
+        header("location:gallery.php");
+        mysqli_close($con);
+        die;
+    }
+    else {
+        mysqli_close($con);
+        redirectOnError("index.php", "Wrong Username or Password");
+    }
+
+    mysqli_free_result($query);
+    //close connection on finish
+    mysqli_close($con);
+}
 ?>
 
-<p>Wellcome!</p>
-<form action="yav_register.php" method="post">
-    <fieldset>
-        <legend>Register</legend>
-        <label for="regrName">User name:</label><br/>
-        <input type="text" name="regName" placeholder="Name"/><br/>
-        <label for="regPass">Password:</label><br/>
-        <input type="password" name="regPass" placeholder="Pass"/><br/>
-        <input type="submit" value="Register"/>
-    </fieldset>
-</form>
-<hr/>
-<form action="yav_login.php" method="post">
-    <fieldset>
-        <legend>Log in</legend>
-        <label for="userName">User name:</label><br/>
-        <input type="text" name="logName" placeholder="Name"/><br/>
-        <label for="userPass">Password:</label><br/>
-        <input type="password" name="logPass" placeholder="Pass"/><br/>
-        <input type="submit" value="login"/>
-    </fieldset>
-</form>
-<?php
-include("yav_footer.php");
-?>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="CSS/register.css">
 
+</head>
+<body>
+<header>
+    <h1>Neon Gallery</h1>
+    <nav class="user_interface">
+        <header>LOGIN</header>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
+            <input type="text" name="user_login" id="user" required="" placeholder="USERNAME">
+            <input type="password" name="user_password" id="password" required="" placeholder="PASSWORD">
+            <input type="submit" id="login" value="LOGIN">
+        </form>
+        <a href="register.php">New to us? Register here</a>
+    </nav>
+</header>
 
-
+</body>
+</html>

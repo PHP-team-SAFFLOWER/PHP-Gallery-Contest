@@ -1,119 +1,122 @@
 <?php
-include 'pageParts.php';
-$_SESSION['is_logged'] = false;
-$error_array = array();
+session_start();
+$title = "Register";
+include("functions.php");
 
-function db_init() {
-    $host = 'localhost'; // Host name
-    $username = 'root'; // Mysql username
-    $password = ''; // Mysql password
-    $db_name = 'phpproject'; // Database name
-
-    $connect = mysql_connect($host, $username, $password) or die ('Problem with database');
-
-    if (!mysql_select_db($db_name)) {
-        echo 'Unable to select ' . $db_name . ': ' . mysql_error();
-        exit;
+if (areSet($_POST,array('regName','regPass', 'confPass', 'email'))) {
+    $regName = $_POST['regName'];
+    if (strlen($regName)>50) {
+        redirectOnError('register.php', 'Too long user name');
     }
-}
+    $regPass = $_POST['regPass'];
+    $confPass = $_POST['confPass'];
+    if ($regPass!==$confPass) {
+        redirectOnError('register.php', 'Wrong Confirmation Password');
+    }
+    $email = $_POST['email'];
+    if (!preg_match('/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/', $email) or (strlen($email)>50)) {
+        redirectOnError('register.php', 'Invalid email');
+    }
+    $host="localhost"; // Host name
+    $name="root"; // Mysql username
+    $password=""; // Mysql password
+    $db_name="gallery_db"; // Database name
+    $tbl_name="users"; // Table name
 
-if (!$_SESSION['is_logged'] == true) {
+    //connect to mysql
+    $con = mysqli_connect($host, $name, $password);
+    $regName = mysqli_real_escape_string($con, stripcslashes($_POST['regName']));
+    $regPass = mysqli_real_escape_string($con, stripcslashes($_POST['regPass']));
+    $email = mysqli_real_escape_string($con, stripcslashes($_POST['email']));
+    // Check connection
+    if (mysqli_connect_errno())
+        die ("Failed to connect to MySQL: " . mysqli_connect_error());
+    //check if db_name exists. if no create it
+    $dbIsSet = mysqli_query($con, "SHOW DATABASES LIKE '$db_name'");
+    if ($dbIsSet->num_rows==0) {
+        echo "Database $db_name does not exist. Creating one...<br/>";
+        $createDB = "CREATE DATABASE {$db_name} COLLATE=utf8_unicode_ci";
+        if (!mysqli_query($con, $createDB)) {
+            die ("Cant create database! ".mysqli_error($con)."(".mysqli_errno($con).")<br/>");
+        }
+        echo "database $db_name created successfully :)<br/>";
+    }
+    mysqli_free_result($dbIsSet);
 
-    if (count($_POST) != 0) {
+    //connect to db_name
+    $con = mysqli_connect($host, $name, $password, $db_name);
+    //check if tbl_name exist. if no create it
+    $tblIsSet = mysqli_query($con, "SHOW TABLES LIKE '$tbl_name'");
+    if ($tblIsSet->num_rows==0) {
+        echo "Table $tbl_name does not exist. Creating one...<br/>";
+        $createTable = "CREATE TABLE {$tbl_name} ( "
+        ."user_id INT(11) NOT NULL AUTO_INCREMENT, "
+        ."user_name VARCHAR (50) NOT NULL, "
+        ."password VARCHAR (32) NOT NULL, "
+        ."email VARCHAR (50) NOT NULL, "
+        ."date_reg int(11) NOT NULL, "
+        ."PRIMARY KEY (user_id) )";
+        if (!mysqli_query($con, $createTable)) {
+            die ("Cant create table! ".mysqli_error($con)."(".mysqli_errno($con).")<br/>");
+        }
+        echo "table $tbl_name created successfully :)<br/>";
+    }
+    mysqli_free_result($tblIsSet);
 
-        if ($_POST['form_submit'] == 1) {
-            $user = trim($_POST['user']);
-            $password = trim($_POST['password']);
-            $passwordConf = trim($_POST['confpassword']);
-            $email = trim($_POST['mail']);
-
-            if (strlen($user) < 3) {
-                $error_array['user'] = 'User ID too short';
-            }
-
-            if (strlen($password) < 6) {
-                $error_array['password'] = 'Password too short';
-            }
-
-            if ($password != $passwordConf) {
-                $error_array['passwords_are_different'] = 'Passwords do not match';
-            }
-
-            if (preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/', $email)) {
-                $error_array['email'] = 'Wrong e-mail';
-            }
-
-            if (!count($error_array) > 0) {
-                db_init();
-                $tbl_name = 'new_users'; // Table name
-                $sql = 'SELECT COUNT(*) as cnt FROM ' . $tbl_name . 'WHERE id="' . addslashes($user) . '" OR email="' . addslashes($email) . '"';
-//                echo $sql;
-                $res = mysql_query($sql);
-//                var_dump($res);
-                $row = mysql_fetch_assoc($res);
-
-                if ($row['cnt'] == 0) {
-                    mysql_query('INSERT INTO ' . $tbl_name. ' (user,pass,email,date_register) VALUES("' . addslashes($user) .
-                                '","' . md5($password) . '","' . addslashes($email) . '","' . time() . '")');
-
-                    if (mysql_error()) {
-                        echo '<h1>Error. Please try again</h1>';
-                    }
-                    else {
-                        header('Location: index.php');
-                        exit;
-                    }
-                }
-                else {
-                    $error_array['user'] = 'Name or e-mail already exist';
-                    $error_array['email'] = 'Name or e-mail already exist';
-                }
-            }
+    $newUser = true;
+    //check if user name already exist
+    $query=mysqli_query($con,"SELECT user_name FROM {$db_name}.{$tbl_name}");
+    if ($query->num_rows>0) {
+        if (mysqli_fetch_assoc($query)['user_name']==$regName) {
+            $newUser = false;
+            redirectOnError('index.php', 'User name already exists! Redirecting to index.php in 2 seconds');
         }
     }
+    mysqli_free_result($query);
+    //if no - add user to table
+    if ($newUser) {
+        $inputStr = "INSERT INTO {$tbl_name} (user_id, user_name, password, email, date_reg) "
+            ."VALUES (NULL, '{$regName}', MD5('{$regPass}'), '{$email}', UNIX_TIMESTAMP())";
+        $insertUser = mysqli_query($con, $inputStr);
+        if (!$insertUser) {
+            die ("Error description: " . mysqli_error($con));
+        } else {
+            redirectOnError("index.php", "successfully registered {$regName}<br/>You can now logg in");
+        }
+    }
+    //close connection on finish
+    mysqli_close($con);
+}
 
-    my_header('Register');
 ?>
 
-    <?php
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title><?=$title?></title>
+    <link rel="stylesheet" type="text/css" href="CSS/register.css">
 
-    ?>
+</head>
+<body>
+<header>
+    <h1>Neon Gallery</h1>
+    <nav class="user_interface">
+        <header>REGISTRATION FORM</header>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST">
+    <input type="text" name="regName" id="user" required="" placeholder="USERNAME">
+    <input type="password" name="regPass" id="password" required="" placeholder="PASSWORD">
+    <input type="password" name="confPass" id="confpassword" placeholder="REPEAT PASSWORD">
+    <input type="email" name="email" id="mail" required="" placeholder="EMAIL">
+    <input type="submit" name="submit" id="submit" value="REGISTER NOW">
+    </form>
+        <form>
+            <input type="submit" name="try_free" id="try_free" required="" value="TRY FOR FREE">
+            <input type="submit" name="login" id="login" required="" value="LOGIN">
+        </form>
+    </nav>
 
-<form method="post" action="register.php">
-    <input type="text" name="user" id="user" required="" placeholder="USERNAME"/>
-    <?php
-    if (array_key_exists('user', $error_array)) {
-        echo $error_array['user'];
-    }
-    ?>
-    <br/>
-    <input type="password" name="password" id="password" required="" placeholder="PASSWORD"/>
-    <?php
-    if (array_key_exists('password', $error_array)) {
-        echo $error_array['password'];
-    }
-    ?>
-    <br/>
-    <input type="password" name="confpassword" id="confpassword" placeholder="REPEAT PASSWORD"/>
-    <?php
-    if (array_key_exists('passwords_are_different', $error_array)) {
-        echo $error_array['passwords_are_different'];
-    }
-    ?>
-    <br/>
-    <input type="email" name="mail" id="mail" required="" placeholder="EMAIL"/>
-    <?php
-    if (array_key_exists('email', $error_array)) {
-        echo $error_array['email'];
-    }
-    ?>
-    <input type="submit" name="submit" id="submit" required=""/>
-    <input type="hidden" name="form_submit" value="1">
-</form>
-<?php
-    my_footer();
-}
-else {
-    header('Location: index.php');
-    exit;
-}
+</header>
+
+</body>
+</html>
