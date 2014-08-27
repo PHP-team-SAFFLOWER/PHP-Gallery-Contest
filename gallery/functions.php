@@ -33,7 +33,7 @@ function redirectOnError($page, $errMsg) {
 }
 
 function logged($userName) {
-    if (!areSet($_SESSION, ['userName', 'isLogged']) || $userName !== $_SESSION[$userName]) {
+    if (!areSet($_SESSION, array('userName', 'isLogged')) || $userName !== $_SESSION[$userName]) {
         header("location: index.php");
     }
 }
