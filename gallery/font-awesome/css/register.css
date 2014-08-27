@@ -1,0 +1,203 @@
+@font-face {
+    font-family: 'Monoton';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Monoton'), local('Monoton-Regular'), url(http://themes.googleusercontent.com/static/fonts/monoton/v4/AKI-lyzyNHXByGHeOcds_w.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Iceland';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Iceland'), local('Iceland-Regular'), url(http://themes.googleusercontent.com/static/fonts/iceland/v3/F6LYTZLHrG9BNYXRjU7RSw.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Pacifico Regular'), local('Pacifico-Regular'), url(http://themes.googleusercontent.com/static/fonts/pacifico/v5/yunJt0R8tCvMyj_V4xSjafesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'PressStart';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Press Start 2P'), local('PressStart2P-Regular'), url(http://themes.googleusercontent.com/static/fonts/pressstart2p/v2/8Lg6LX8-ntOHUQnvQ0E7o3dD2UuwsmbX3BOp4SL_VwM.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Audiowide';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Audiowide'), local('Audiowide-Regular'), url(http://themes.googleusercontent.com/static/fonts/audiowide/v2/8XtYtNKEyyZh481XVWfVOj8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Vampiro One';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Vampiro One'), local('VampiroOne-Regular'), url(http://themes.googleusercontent.com/static/fonts/vampiroone/v3/Ho2Xld8UbQyBA8XLxF1_NYbN6UDyHWBl620a-IRfuBk.woff) format('woff');
+}
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-size: 62.50%;
+
+    background-image: url("../IMAGES/Background.jpg");
+    background-size: 20%;
+    padding: 2%;
+}
+h1{
+    text-align: center;
+    font-size: 4rem;
+    font-family: "Vampiro One";
+    color: #1e1b1b;
+    margin-bottom: 2%;
+    -webkit-animation: neon2 0.9s ease-in-out infinite alternate;
+}
+
+::-webkit-input-placeholder {
+    color:#f00; font-family: "Vampiro One";
+}
+
+a{
+
+    font-size: 20px;
+    text-decoration: none;
+    color: darkslategrey;
+    border-radius: 20px;
+    text-align: center;
+    display: block;
+    margin: 2%;
+}
+
+
+.user_interface{
+    background: whitesmoke;
+    border-radius: 40px;
+    margin: 0 auto;
+    margin-top: 5%;
+    width: 500px;
+    height: 600px;
+    -webkit-animation: neon3 2s ease-in-out infinite alternate;
+}
+.user_interface header{
+    text-align: center;
+    font-size: 1.9rem;
+    font-family: Monoton;
+    color: blue;
+}
+.user_interface form{
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+
+
+}
+.user_interface input{
+    display: block;
+    margin: 0 auto;
+    margin-top: 5%;
+    width: 200px;
+    background: #C9C0B5;
+    border: #ffffff;
+    padding: 2%;
+    border-radius: 20px;
+    text-align: center;
+    font-family: Audiowide;
+    border: 1px solid;
+    outline: none;
+
+}
+.user_interface #try_free{
+    margin: 0 auto;
+    margin-top: 2%;
+    border: 1px solid black;
+    color: blue;
+
+
+}
+.user_interface #login{
+    color: green;
+    border: black 1px solid;
+}
+.user_interface input:focus {
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+}
+
+/*glow for webkit*/
+@-webkit-keyframes neon1 {
+    from {
+        box-shadow: 0 0 1px #fff,
+        0 0 2px  #fff,
+        0 0 4px  #fff,
+        0 0 5px  #228DFF,
+        0 0 8px  #228DFF,
+        0 0 10px  #228DFF,
+        0 0 25px #228DFF,
+        0 0 30px #228DFF;
+    }
+    to {
+        box-shadow: 0 0 1px #fff,
+        0 0 1px  #fff,
+        0 0 5px  #fff,
+        0 0 10px  #228DFF,
+        0 0 12px  #228DFF,
+        0 0 15px  #228DFF,
+        0 0 20px #228DFF,
+        0 0 30px #228DFF;
+    }
+}
+@-webkit-keyframes neon2 {
+    from {
+        text-shadow:  0 0 10px #fff,
+        0 0 1px  #fff,
+        0 0 5px  #fff,
+        0 0 10px  #228DFF,
+        0 0 20px  #228DFF,
+        0 0 35px  #228DFF,
+        0 0 40px #228DFF,
+        0 0 50px #228DFF;
+    }
+
+    to {
+        text-shadow: 0 0 10px #fff,
+        0 0 5px  #fff,
+        0 0 20px  #fff,
+        0 0 30px  #FFDD1B,
+        0 0 50px  #FFDD1B,
+        0 0 60px  #FFDD1B,
+        0 0 70px #FFDD1B,
+        0 0 80px #FFDD1B;
+    }
+}
+@-webkit-keyframes neon3 {
+    from {
+       box-shadow:  0 0 10px #fff,
+        0 0 5px  #fff,
+        0 0 10px  #fff,
+        0 0 15px  #B6FF00,
+        0 0 30px  #B6FF00,
+        0 0 50px  #B6FF00,
+        0 0 70px #B6FF00,
+        0 0 80px #B6FF00;
+    }
+
+    to {
+        box-shadow: 0 0 10px #fff,
+        0 0 1px  #fff,
+        0 0 5px  #fff,
+        0 0 10px  #228DFF,
+        0 0 20px  #228DFF,
+        0 0 35px  #228DFF,
+        0 0 40px #228DFF,
+        0 0 50px #228DFF;
+    }
+}
+

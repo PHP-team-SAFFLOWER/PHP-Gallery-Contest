@@ -1,0 +1,105 @@
+
+@font-face {
+    font-family: 'Iceland';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Iceland'), local('Iceland-Regular'), url(http://themes.googleusercontent.com/static/fonts/iceland/v3/F6LYTZLHrG9BNYXRjU7RSw.woff) format('woff');
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-size: 62.50%;
+    background-image: url("../IMAGES/Background.jpg");
+    background-size: 20%;
+    padding: 2%;
+}
+.footer{
+    height: 120px;
+    }
+.footer .contacts{
+    margin-top: 10px;
+    height: 100px;
+    margin-left: 20px;
+    width: 600px;
+}
+.footer .contacts p{
+    font-size: 2rem;
+    color: #ffffff;
+    margin: 10px 0 10px 10px;
+    font-family: Iceland;
+    -webkit-animation: neon6 1.5s ease-in-out infinite alternate;
+
+
+}
+.footer .contacts ul li{
+    font-size: 1.5rem;
+    margin-left: 10px;
+    color: #ffffff;
+    -webkit-animation: neon6 1.5s ease-in-out infinite alternate;
+
+}
+
+.footer .contacts ul li a{
+    margin-left: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: Iceland;
+    font-size: 1.5rem;
+
+}
+
+.neon_lines_footer{
+    -webkit-animation: neon5 1.5s ease-in-out infinite alternate;
+    border: #ffffff 1px solid;
+
+
+}
+
+@-webkit-keyframes neon5 {
+    from {
+        box-shadow: 0 0 1px #fff,
+        0 0 2px #fff,
+        0 0 4px #fff,
+        0 0 5px #228DFF,
+        0 0 8px #228DFF,
+        0 0 10px #228DFF,
+        0 0 25px #228DFF,
+        0 0 30px #228DFF;
+    }
+    to {
+        box-shadow: 0 0 0px #fff,
+        0 0 1px #fff,
+        0 0 5px #fff,
+        0 0 10px #dbdf25,
+        0 0 12px #dbdf25,
+        0 0 15px #dbdf25,
+        0 0 20px #dbdf25,
+        0 0 30px #dbdf25;
+    }
+}
+@-webkit-keyframes neon6 {
+    from {
+        text-shadow: 0 0 1px #fff,
+        0 0 2px #fff,
+        0 0 4px #fff,
+        0 0 5px #228DFF,
+        0 0 8px #228DFF,
+        0 0 10px #228DFF,
+        0 0 25px #228DFF,
+        0 0 30px #228DFF;
+    }
+    to {
+        text-shadow: 0 0 0px #fff,
+        0 0 1px #fff,
+        0 0 5px #fff,
+        0 0 10px #df090e,
+        0 0 12px #df090e,
+        0 0 15px #df090e,
+        0 0 20px #df090e,
+        0 0 30px #df090e;
+    }
+}
