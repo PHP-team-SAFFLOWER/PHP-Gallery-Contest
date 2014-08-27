@@ -10,6 +10,23 @@ function areSet($submit, $arr) {
 }
 
 function redirectOnError($page, $errMsg) {
+?>
+    <!DOCTYPE html>
+    <html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="CSS/register.css">
+    </head>
+    <body>
+    <section>
+        <div class="user_interface">
+            <p><?= $errMsg?></p>
+        </div>
+    </section>
+    </body>
+    </html>
+<?php
     if ($_POST) {$_REQUEST=array();}
     header("refresh:2; url=$page");
     die ($errMsg);

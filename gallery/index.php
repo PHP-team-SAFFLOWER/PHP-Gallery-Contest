@@ -40,7 +40,7 @@ if ($_POST && areSet($_POST,array('user_login','user_password'))) {
     $query=mysqli_query($con,"SELECT user_name, password FROM users WHERE user_name = '$logName' AND password = '".MD5($logPass)."'");
     if ($query->num_rows==1) {
 //        $row = mysqli_fetch_assoc($query);
-        $_REQUEST = [];
+        $_REQUEST = array();
         $_SESSION['userName'] = $logName;
         $_SESSION['isLogged'] = true;
         header("location:gallery.php");
