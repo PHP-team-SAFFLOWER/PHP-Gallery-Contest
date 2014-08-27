@@ -12,7 +12,7 @@
             <hr class="neon_lines">
             <ul class="menu">
                 <li><a href="">INFO</a></li>
-                <li><a href="uf.html">UPLOAD</a></li>
+                <li><a href="upload.php">UPLOAD</a></li>
                 <li><a href="">REGISTER</a></li>
                 <li><a href="">GALLERY</a></li>
                 <li><a href="">CATEGORY</a></li>
@@ -22,3 +22,4 @@
         </nav>
 
     </header>
+
