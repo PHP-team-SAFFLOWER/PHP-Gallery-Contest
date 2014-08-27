@@ -5,7 +5,7 @@
             </div>
             <div id="user">
                 <p class="fa fa-user" ><a href="#">User: <?=$userName?></a></p>
-                <p class="fa fa-sign-out"><a href="logout.php">Log Out</a></p>
+                <p class="fa fa-sign-out"><a href="./logout.php">Log Out</a></p>
             </div>
         </div>
         <nav>

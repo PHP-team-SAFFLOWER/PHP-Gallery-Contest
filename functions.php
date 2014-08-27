@@ -16,18 +16,18 @@ function redirectOnError($page, $errMsg) {
     <head lang="en">
         <meta charset="UTF-8">
         <title></title>
-        <link rel="stylesheet" type="text/css" href="CSS/register.css">
+        <link rel="stylesheet" type="text/css" href="CSS/Register.css">
     </head>
     <body>
     <section>
         <div class="user_interface">
-            <p><?= $errMsg?></p>
+            <header><?= $errMsg?></header>
         </div>
     </section>
     </body>
     </html>
 <?php
-    if ($_POST) {$_REQUEST=array();}
+    if ($_POST) {$_POST=array();}
     header("refresh:2; url=$page");
     die ($errMsg);
 }

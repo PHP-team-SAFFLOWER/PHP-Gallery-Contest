@@ -83,7 +83,7 @@ a{
     margin: 0 auto;
     margin-top: 5%;
     width: 500px;
-    height: 600px;
+    height: 500px;
     -webkit-animation: neon3 2s ease-in-out infinite alternate;
 }
 .user_interface header{
@@ -94,7 +94,7 @@ a{
 }
 .user_interface form{
     width: 400px;
-    height: 400px;
+    /*height: 400px;*/
     margin: 0 auto;
 
 

@@ -1,5 +1,7 @@
 <?php
 session_start();
+define('BASE_PATH', dirname(realpath(__FILE__)));
+$_SESSION['bp'] = BASE_PATH;
 //ob_start();
 $title = "Login";
 include("functions.php");
@@ -71,12 +73,13 @@ if ($_POST && areSet($_POST,array('user_login','user_password'))) {
     <h1>Neon Gallery</h1>
     <nav class="user_interface">
         <header>LOGIN</header>
+        <a href="register.php">New to us? Register here</a>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
             <input type="text" name="user_login" id="user" required="" placeholder="USERNAME">
             <input type="password" name="user_password" id="password" required="" placeholder="PASSWORD">
             <input type="submit" id="login" value="LOGIN">
         </form>
-        <a href="register.php">New to us? Register here</a>
+
     </nav>
 </header>
 
