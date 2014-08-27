@@ -59,7 +59,7 @@ include './header/header.php';
 <div class="container_gallery">
     <div class="photo">
 <?php
-$upload_path = "./IMAGES/";
+$upload_path = "./IMG/";
 $files = scandir($upload_path);
 $fileExtensions = ['.jpg','.png','.gif','jpeg'];
 for ($i = 2; $i < count($files); $i++) {
