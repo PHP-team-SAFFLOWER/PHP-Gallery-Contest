@@ -3,7 +3,7 @@ session_start();
 $title = "Register";
 include("functions.php");
 
-if (areSet($_POST,['regName','regPass', 'confPass', 'email'])) {
+if (areSet($_POST,array('regName','regPass', 'confPass', 'email'))) {
     $regName = $_POST['regName'];
     if (strlen($regName)>50) {
         redirectOnError('register.php', 'Too long user name');
