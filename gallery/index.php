@@ -4,7 +4,7 @@ session_start();
 $title = "Login";
 include("functions.php");
 
-if ($_REQUEST && areSet($_POST,['user_login','user_password'])) {
+if ($_POST && areSet($_POST,array('user_login','user_password'))) {
     $logName = $_POST['user_login'];
     $logPass = $_POST['user_password'];
     $host="localhost"; // Host name

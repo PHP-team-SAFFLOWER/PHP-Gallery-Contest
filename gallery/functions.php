@@ -10,7 +10,7 @@ function areSet($submit, $arr) {
 }
 
 function redirectOnError($page, $errMsg) {
-    if ($_POST) {$_POST=[];}
+    if ($_POST) {$_REQUEST=array();}
     header("refresh:2; url=$page");
     die ($errMsg);
 }
