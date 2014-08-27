@@ -33,6 +33,7 @@
 				echo "File <b>". $_FILES['upfile']['name'] ."</b> uploaded successfully.\n<br>";
 				echo "Type: ".$_FILES['upfile']['type']."<br/>";			
 				echo "Filesize:  ".$filesize." bytes / ".round($filesize/1024)." KB / ".round(($filesize/1024)/1024)." MB \n<br>";
+                header("refresh:2; url=gallery.php");
 			} 
 			else {
 				raise_upload_error("Error uploading file: <b>". $_FILES['upfile']['tmp_name'] . "</b>");

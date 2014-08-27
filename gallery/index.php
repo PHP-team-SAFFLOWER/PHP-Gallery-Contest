@@ -4,7 +4,7 @@ session_start();
 $title = "Login";
 include("functions.php");
 
-if ($_POST && areSet($_POST,['user_login','user_password', 'user_confpassword'])) {
+if ($_REQUEST && areSet($_POST,['user_login','user_password'])) {
     $logName = $_POST['user_login'];
     $logPass = $_POST['user_password'];
     $host="localhost"; // Host name
@@ -40,7 +40,7 @@ if ($_POST && areSet($_POST,['user_login','user_password', 'user_confpassword'])
     $query=mysqli_query($con,"SELECT user_name, password FROM users WHERE user_name = '$logName' AND password = '".MD5($logPass)."'");
     if ($query->num_rows==1) {
 //        $row = mysqli_fetch_assoc($query);
-        $_POST = [];
+        $_REQUEST = [];
         $_SESSION['userName'] = $logName;
         $_SESSION['isLogged'] = true;
         header("location:gallery.php");
