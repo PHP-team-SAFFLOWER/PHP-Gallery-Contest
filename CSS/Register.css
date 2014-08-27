@@ -40,7 +40,6 @@
     src: local('Vampiro One'), local('VampiroOne-Regular'), url(http://themes.googleusercontent.com/static/fonts/vampiroone/v3/Ho2Xld8UbQyBA8XLxF1_NYbN6UDyHWBl620a-IRfuBk.woff) format('woff');
 }
 
-
 *{
     padding: 0;
     margin: 0;
@@ -77,6 +76,7 @@ a{
     margin: 2%;
 }
 
+
 .user_interface{
     background: whitesmoke;
     border-radius: 40px;
@@ -94,8 +94,10 @@ a{
 }
 .user_interface form{
     width: 400px;
-    height: 300px;
+    height: 400px;
     margin: 0 auto;
+
+
 }
 .user_interface input{
     display: block;
@@ -110,12 +112,15 @@ a{
     font-family: Audiowide;
     border: 1px solid;
     outline: none;
+
 }
 .user_interface #try_free{
     margin: 0 auto;
     margin-top: 2%;
     border: 1px solid black;
     color: blue;
+
+
 }
 .user_interface #login{
     color: green;
@@ -123,17 +128,6 @@ a{
 }
 .user_interface input:focus {
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
-}
-.user_interface p{
-    text-align: center;
-    font-size: 1.9rem;
-    font-family: Monoton;
-    color: blue;
-}
-
-p {
-    padding-top: 40px;
-    height: 300px;
 }
 
 /*glow for webkit*/

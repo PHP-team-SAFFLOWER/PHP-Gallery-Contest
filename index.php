@@ -67,18 +67,9 @@ if ($_POST && areSet($_POST,array('user_login','user_password'))) {
 
 </head>
 <body>
-<header>
-    <h1>Neon Gallery</h1>
-    <nav class="user_interface">
-        <header>LOGIN</header>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
-            <input type="text" name="user_login" id="user" required="" placeholder="USERNAME">
-            <input type="password" name="user_password" id="password" required="" placeholder="PASSWORD">
-            <input type="submit" id="login" value="LOGIN">
-        </form>
-        <a href="register.php">New to us? Register here</a>
-    </nav>
-</header>
+<?php
+include './header/header.php';
+?>
 
 </body>
 </html>

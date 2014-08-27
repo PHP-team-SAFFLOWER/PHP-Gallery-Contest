@@ -25,25 +25,9 @@ $title = "upload";
 </head>
 <body>
 <div class="container">
-    <header>
-        <div id="wrapper">
-            <div id="logo" >
-                <a href="#" id="logo_main">SAFFLOWER</a>
-            </div>
-            <div id="user">
-                <p class="fa fa-user" ><a href="">User</a></p>
-                <p class="fa fa-sign-out"><a href="">Log Out</a></p>
-            </div>
-        </div>
-        <nav>
-            <hr class="neon_lines">
-            <ul class="menu">
-                <li><a href="info.html">INFO</a></li>
-                <li><a href="gallery.html">GALLERY</a></li>
-            </ul>
-            <hr class="neon_lines">
-        </nav>
-    </header>
+<?php
+include './header/header.php';
+?>
 
 
 
